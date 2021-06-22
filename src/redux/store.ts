@@ -1,10 +1,13 @@
 import { configureStore, combineReducers, Action } from '@reduxjs/toolkit';
 import { ThunkAction } from 'redux-thunk';
 
-import uiReducer from 'state/ui';
+import uiReducer from 'redux/ui';
+import fakeApiReducer from 'redux/fakeApi';
 
+// each slice's reducer goes here
 const rootReducer = combineReducers({
-  ui: uiReducer
+  ui: uiReducer,
+  fakeApi: fakeApiReducer,
 });
 
 const store = configureStore({

@@ -1,22 +1,25 @@
 import React from 'react';
 
-import Layout from 'components/Layout';
-import SEO from 'components/SEO';
+import SubscriptionsInitializer from 'containers/SubscriptionsInitializer';
+import ChildrenComponents from 'components/ChildrenComponents';
+import { useFakeApiSubscriptions } from 'initializers/useFakeApiSubscriptions';
 
 const IndexPage: React.FC = () => {
+  // NOTE - this is not really the root of the app (Gatsy handles it differently)
+  // I'm just treating the index page as if it's the only page of the app
+  // Let's pretend that this is near app root level
+
+  // happens once - initialize FakeAPI state and its subscriptions via hook
+  useFakeApiSubscriptions();
+  // TODO can separate other api subscriptions / initializers into another hook
+  // useAnotherApiListeners();
+  // useFirebaseListeners();
+  // useAgoraListeners();
+
   return (
-    <Layout>
-      <SEO title="Home" />
-      <div className="text-center">
-        <h1 className="text-2xl font-semibold">Gatsby Redux-Toolkit Starter</h1>
-        <p className="mt-5">
-          This is a starter for <span className="font-semibold">Gatsby</span> websites using{' '}
-          <span className="font-semibold">Redux-Toolkit</span>, <span className="font-semibold">Typescript</span>,{' '}
-          <span className="font-semibold">Styled Components</span>, <span className="font-semibold">Talwind CSS</span> &{' '}
-          <span className="font-semibold">React Font Awesome</span>.
-        </p>
-      </div>
-    </Layout>
+    <div>
+      <ChildrenComponents />
+    </div>
   );
 };
 
